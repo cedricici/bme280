@@ -1,5 +1,5 @@
 CFLAGS=-c -Wall -O2
-LIBS = -lm -lbme280 -loled96 -lpthread
+LIBS = -lm -lbme280 -lpthread
 
 all: bmetest
 
