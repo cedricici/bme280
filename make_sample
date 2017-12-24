@@ -1,13 +1,19 @@
 CFLAGS=-c -Wall -O2
 LIBS = -lm -lbme280 -lpthread
 
-all: bmetest
+all: bmetest getbme280json
 
 bmetest: main.o
 	$(CC) main.o $(LIBS) -o bmetest
+
+getbme280json: getbme280json.o
+	$(CC) getbme280json.o $(LIBS) -o getbme280json
+
+getbme280json.o: getbme280json.c
+	$(CC) $(CFLAGS) getbme280json.c
 
 main.o: main.c
 	$(CC) $(CFLAGS) main.c
 
 clean:
-	rm *.o bmetest
+	rm *.o bmetest getbme280json
