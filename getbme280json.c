@@ -18,18 +18,22 @@ int main(int argc, char *argv[])
 	int T, P, H; // calibrated values
 	int i2cBus,i2cDev;
 
-	if (argc > 1){
-		i2cDev = atoi(argv[1]);
+
+	if (argc > 2){
+		i2cDev = strtol(argv[2],NULL,0);
 	}else{
 		i2cDev = 0x76;
 	}
 
 
-	if (argc > 0){
-		i2cBus = atoi(argv[0]);
+	if (argc > 1){
+		i2cBus = atoi(argv[1]);
 	}else{
-		i2cBus = 0x76;
+		i2cBus = 0;
 	}
+
+
+	//printf(" Bus: %d , Dev: %d",i2cBus,i2cDev);
 
 	bme280 = bme280Init(i2cBus, i2cDev);
 	if (bme280 != 0)
